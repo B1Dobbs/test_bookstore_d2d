@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'test_bookstore_app'
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
