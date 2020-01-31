@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import File
+from .models import OnixFile
 
 class FileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = File
+        model = OnixFile
         fields = "__all__"
