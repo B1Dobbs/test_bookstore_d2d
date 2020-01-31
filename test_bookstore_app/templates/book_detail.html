@@ -7,16 +7,36 @@
 <body>
     {% block content %}
     <h2>Test Bookstore</h2>
-    <p> <strong>Book Name: </strong> {{ title }}</p>
-    <p> <strong>Author: </strong> {{ author }}</p>
-    <p> <strong>Price:</strong> {{ price }}</p>
-    <p> <strong>Release Date: </strong>{{ release_date}}</p>
-    <p> <strong> ISBN:</strong> {{ isbn }}</p>
-    <p> <strong>Availability:</strong> {{ availability }}</p>
-    <p> <strong>Description:</strong> {{ description }}</p>
-    <p> <strong>Series:</strong> {{ series }}</p>
-    <p> <strong>Volume Number:</strong> {{ volume_number }}</p>
-    <p> <strong>Book ID:</strong> {{ book_id }}</p>
+    <button><a href="./{{ redirect_to }}">Library</a></button>
+    <p id = "title"> <strong>{{ title }} </strong></p>
+    <div> <strong>Author: </strong>
+        <span id = "author"> {{ author }}</span>
+        </div>
+    <div> <strong>Price: </strong>
+        <span id = "price"> {{ price }}</span>
+    </div>
+    <div> <strong>Release Date: </strong>
+        <span id = "release_date"> {{ release_date }}</span>
+    </div>
+    <div> <strong>ISBN: </strong>
+        <span id = "isbn"> {{ isbn }}</span>
+    </div>
+    <div> <strong>Availability: </strong>
+        <span id = "availability"> {{ availability }}</span>
+    </div>
+    <div> <strong>Description: </strong>
+        <span id = "description"> {{ description }}</span>
+        <button>Show More</button>
+    </div>
+    <div> <strong>Series: </strong>
+        <span id = "series"> {{ series }}</span>
+    </div>
+    <div> <strong>Volume Number: </strong>
+        <span id = "volume_number"> {{ volume_number }}</span>
+    </div>
+    <div> <strong>Book ID: </strong>
+        <span id = "book_id"> {{ book_id }}</span>
+    </div>
     {% endblock %}
 </body>
 

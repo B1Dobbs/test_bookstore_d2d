@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 
+def book_list(request):
+    return HttpResponse("Hello, you are on the book list page")
+
 def book_detail(request):
     title = "Harry Potter and the Sorcerer's Stone"
     author = "J.K. Rowling"
@@ -29,6 +32,4 @@ def book_detail(request):
     }
     return HttpResponse(template.render(context, request))
 
-'''class DetailView(generic.DetailView):
-    model = Question
-    template_name = 'test_bookstore_app/book-detail.html'''
+
