@@ -3,12 +3,20 @@
     <table>
         <tr>
             <th>Title</th>
+            <th>Authors</th>
             <th>ISBN</th>
+            <th>Availability</th>
         </tr>
     {% for book in book_list %}
     <tr>    
         <td><a href="/library/{{ book.isbn }}/">{{ book.title }}</a></td>
+        <td>{{book.authors}}</td>
         <td>{{book.isbn}}</td>
+        {% if book.availability %}
+            <td>Available</td>
+        {% else %}
+            <td>Not Available</td>
+        {% endif %}
     </tr>
     {% endfor %}
     </table>
