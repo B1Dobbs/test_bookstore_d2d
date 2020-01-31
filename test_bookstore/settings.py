@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'test_bookstore_app',
+    'api_app',
     'rest_framework',
 ]
 
