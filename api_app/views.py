@@ -5,6 +5,8 @@ from rest_framework.views import APIView
 from rest_framework import status
 from .serializers import FileSerializer
 
+from .utils import OnixParser
+from django.http import JsonResponse
 
 class FileUploadView(APIView):
     parser_class = (FileUploadParser,)
@@ -20,7 +22,13 @@ class FileUploadView(APIView):
           return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class FileProcessView(APIView):
-    # Will be class to process the ONIX File
+    
+    def get(self, request, format=None):
+        """
+        API to process ONIX File
+        """
+        #TODO: call process onix here
+        return JsonResponse({'note': 'Processing Onix'})
 
     # Dummy return for right now
     def post(self, request, *args, **kwargs):
