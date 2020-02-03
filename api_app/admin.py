@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import File
+from .models import OnixFile
 
 # Register your models here.
 
-@admin.register(File)
+@admin.register(OnixFile)
 class FileAdmin(admin.ModelAdmin):
-    model = File
+    model = OnixFile

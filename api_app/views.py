@@ -24,4 +24,4 @@ class FileProcessView(APIView):
 
     # Dummy return for right now
     def post(self, request, *args, **kwargs):
-        return Response(file_serializer.data, status=status.HTTP_201_CREATED)
+        return False
