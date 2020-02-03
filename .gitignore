@@ -1,1 +1,4 @@
 .vscode
+*.pyc
+api_app/migrations
+test_bookstore_app/migrations
