@@ -1,7 +1,6 @@
 from .models import OnixFile
 from lxml import etree
 
-
 class OnixParser():
 
     def get_root(xmlFile):
