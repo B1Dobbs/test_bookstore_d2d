@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from .serializers import FileSerializer
+from .models import File
 
 from .utils import OnixParser
 from django.http import JsonResponse
@@ -28,6 +29,7 @@ class FileProcessView(APIView):
         API to process ONIX File
         """
         #TODO: call process onix here
+        process_onix(File.file)
         return JsonResponse({'note': 'Processing Onix'})
 
     
