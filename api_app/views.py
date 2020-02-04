@@ -29,6 +29,6 @@ class FileProcessView(APIView):
         API to process ONIX File
         """
         #TODO: call process onix here
-        process_onix(File.file)
+        #process_onix(File.file)
         return JsonResponse({'note': 'Processing Onix'})
 

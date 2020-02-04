@@ -1,4 +1,6 @@
 from django.db import models
+from .validators import validate_xml
+import onixcheck
 
 class SingletonModel(models.Model):
 
@@ -14,10 +16,10 @@ class SingletonModel(models.Model):
 
     @classmethod
     def load(cls):
-        obj, created = cls.objects.get_or_create(pk=1)
+        obj, created = cls.Objects.get_or_create(pk=1)
         return obj
 
 class OnixFile(SingletonModel):
-    onix_file = models.FileField(blank=False, null=False)
+    onix_file = models.FileField(blank=False, null=False, validators=[validate_xml])
     def __str__(self):
         return self.onix_file.name
