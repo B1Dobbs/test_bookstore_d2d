@@ -32,6 +32,3 @@ class FileProcessView(APIView):
         process_onix(File.file)
         return JsonResponse({'note': 'Processing Onix'})
 
-    # Dummy return for right now
-    def post(self, request, *args, **kwargs):
-        return False
