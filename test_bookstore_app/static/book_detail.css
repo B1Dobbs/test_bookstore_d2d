@@ -1,0 +1,71 @@
+hr {
+    border-bottom-color: black;
+    border-bottom-width: 1px;
+}
+
+.labels {
+    font-size: 22px;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #929292;
+    padding-right: 10px;
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    font-size: 35px;
+    color: #1c2559;
+    padding-top: 50px;
+}
+
+.details {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    color: #1c2559;
+    text-align: right;
+}
+
+.details-block {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+div .box{
+    background-color: #f7f6f6;
+    width: 120px;
+    outline: 15px #929292;
+    padding: 25px;
+    margin: 10px;
+  }
+
+.box .details {
+    text-align: center;
+}
+  
+.box .labels {
+    text-align: center;
+}
+.position-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.show-more {
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+a:hover {
+    color: #ef320a;
+}
+
+button:hover {
+    color: #ef320a;
+}
+
+.check {
+    color: #92d36e;
+    font-size: 24px;
+}

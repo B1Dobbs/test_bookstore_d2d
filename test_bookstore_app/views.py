@@ -1,10 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-<<<<<<< HEAD
-from django.views.generic.detail import DetailView
-from django.shortcuts import get_object_or_404
-=======
 
 def book_list(request):
     return HttpResponse("Hello, you are on the book list page")
@@ -37,23 +33,11 @@ def book_detail(request):
     return HttpResponse(template.render(context, request))
 
 
->>>>>>> 5f28351429969eca77cb9c4ff5aa02e7a85f2a75
 from .models import Book
 def library(request):
-    template = loader.get_template('test_bookstore_app/library.html')
+    template = loader.get_template('test_bookstore_app_templates/library.html')
     book_list = Book.objects.all()
     context = {
         'book_list': book_list,
     }
     return HttpResponse(template.render(context, request))
-<<<<<<< HEAD
-
-class BookDetailView(DetailView):
-    model = Book
-    template = loader.get_template('test_bookstore_app/book_detail.html')
-    def get(self, request, *args, **kwargs):
-        book = get_object_or_404(Book, pk=kwargs['pk'])
-        context = {'book': book}
-        return render(request, 'books/book_detail.html', context)
-=======
->>>>>>> 5f28351429969eca77cb9c4ff5aa02e7a85f2a75
