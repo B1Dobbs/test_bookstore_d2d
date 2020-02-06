@@ -57,14 +57,16 @@
                     <span class = "labels">Description </span>
                 </div>
                 <div class = "small-10 cell">
-                    <span class = "details" id = "description">{{ description }}<span id="dots">...</span><span id="more" class = "more-text">sibility. All he knows is a miserable life with the Dursleys, 
-                        his horrible aunt and uncle, and their abominable son, Dudley -- a great big swollen spoiled bully. Harry's room is a tiny closet at the foot of the stairs, 
-                        and he hasn't had a birthday party in eleven years. But all that is about to change when a mysterious letter arrives by owl messenger: a letter with an invitation 
-                        to an incredible place that Harry -- and anyone who reads about him -- will find unforgettable.</span></span>
+                    {% if description|length > 250 %}
+                    <span class = "details" id = "description">{{ description|truncatechars:250 }}</span><span id="dots"></span>
                 </div>
             </div>
                 <button onclick="showMore()" id="myBtn" class = "labels show-more" > Show More &#709</button>
-                
+                    {% else %}
+                    <span class = "details" id = "description">{{ description}}</span>
+                </div>
+            </div>
+                {% endif %}
         </div>
         <hr/>
         <div>
@@ -89,17 +91,17 @@
     <script type = "text/javascript">
         function showMore() {
           var dots = document.getElementById("dots");
-          var moreText = document.getElementById("more");
           var btnText = document.getElementById("myBtn");
+          var description = document.getElementById("description");
         
           if (dots.style.display === "none") {
             dots.style.display = "inline";
             btnText.innerHTML = "Show More &#709";
-            moreText.style.display = "none"; 
+            description.innerHTML = "{{ description|truncatechars:250}}";
           } else {
             dots.style.display = "none";
             btnText.innerHTML = "Show Less &#708"; 
-            moreText.style.display = "inline";
+            description.innerHTML = "{{ description}}";
           }
         }
     </script>
