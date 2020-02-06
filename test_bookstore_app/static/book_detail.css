@@ -90,6 +90,12 @@ button:hover {
     vertical-align: text-bottom;
 }
 
+.x-mark {
+    color: #ff3823;
+    font-size: 27px;
+    vertical-align: text-bottom;
+}
+
 .arrow {
     font-size: 24px;
 }

@@ -5,6 +5,7 @@
         {% block title %}<title>Test Bookstore</title>{% endblock %}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/css/foundation.min.css">
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto|Roboto+Condensed&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="{% static 'book_detail.css'%}">
     </head>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
@@ -41,7 +42,11 @@
                 </div>
                 <div class = "small-4 cell">
                     <span class = "labels">Availability </span>
+                    {% if availability %}
                     <i class='fas fa-check-circle check'></i>
+                    {% else %}
+                    <i class="fa fa-times-circle x-mark"></i>
+                    {% endif %}
                 </div>
             </div>
         </div>
