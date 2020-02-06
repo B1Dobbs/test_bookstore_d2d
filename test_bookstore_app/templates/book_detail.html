@@ -13,7 +13,7 @@
     {% block content %}
     <h2>Test Bookstore</h2>
     <div class = "details-block">
-        <button><a href="./{{ redirect_to }}" class = "labels"> &#x2190 Library</a></button>
+        <button><a href="../library" class = "labels"> &#x2190 Library</a></button>
         <p id = "title" class = "title"> <strong>{{ title }} </strong></p>
         <div>
             <span class = "labels">By </span>
@@ -57,10 +57,13 @@
                     <span class = "labels">Description </span>
                 </div>
                 <div class = "small-10 cell">
-                    <span class = "details" id = "description"> {{ description }}</span>
+                    <span class = "details" id = "description">{{ description }}<span id="dots">...</span><span id="more" class = "more-text">sibility. All he knows is a miserable life with the Dursleys, 
+                        his horrible aunt and uncle, and their abominable son, Dudley -- a great big swollen spoiled bully. Harry's room is a tiny closet at the foot of the stairs, 
+                        and he hasn't had a birthday party in eleven years. But all that is about to change when a mysterious letter arrives by owl messenger: a letter with an invitation 
+                        to an incredible place that Harry -- and anyone who reads about him -- will find unforgettable.</span></span>
                 </div>
             </div>
-                <button class = "labels show-more">Show More <span class = "arrow">&#709</span></button>
+                <button onclick="showMore()" id="myBtn" class = "labels show-more" > Show More &#709</button>
                 
         </div>
         <hr/>
@@ -82,7 +85,24 @@
         </div>
         <hr/>
     </div>
+
+    <script type = "text/javascript">
+        function showMore() {
+          var dots = document.getElementById("dots");
+          var moreText = document.getElementById("more");
+          var btnText = document.getElementById("myBtn");
+        
+          if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "Show More &#709";
+            moreText.style.display = "none"; 
+          } else {
+            dots.style.display = "none";
+            btnText.innerHTML = "Show Less &#708"; 
+            moreText.style.display = "inline";
+          }
+        }
+    </script>
     {% endblock %}
 </body>
-
 </html>

@@ -9,6 +9,11 @@ hr {
     margin-top: 20px;
 }
 
+
+span .more-text {
+    display: none;
+}
+
 .labels {
     font-size: 22px;
     font-family: 'Roboto Condensed', sans-serif;
@@ -74,6 +79,7 @@ div .box{
     width: 1000px;
     margin: 0 auto;
     padding-top: 20px;
+    outline: none;
 }
 
 a:hover {
@@ -82,6 +88,7 @@ a:hover {
 
 button:hover {
     color: #ef320a;
+    cursor: pointer;
 }
 
 .check {

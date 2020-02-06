@@ -11,8 +11,8 @@ def book_detail(request):
     price = "$11.69"
     release_date = "June 26, 1997"
     isbn = "9780590353427"
-    availability = True
-    description = "Harry Potter has never been the star of a Quidditch team, scoring points while riding a broom far above the ground. He knows no spells, has never helped to hatch a dragon, and has never worn a cloak of invisibility."
+    availability = False
+    description = "Harry Potter has never been the star of a Quidditch team, scoring points while riding a broom far above the ground. He knows no spells, has never helped to hatch a dragon, and has never worn a cloak of invi"
     series = "Harry Potter"
     volume_number = "2"
     book_id = "9780590353427"
