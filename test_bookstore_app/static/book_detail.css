@@ -1,6 +1,12 @@
+body {
+    background-color: #FFFFFF;
+}
+
 hr {
     border-bottom-color: black;
-    border-bottom-width: 1px;
+    height: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .labels {
@@ -33,28 +39,41 @@ hr {
 div .box{
     background-color: #f7f6f6;
     width: 120px;
+    height: 120px;
     outline: 15px #929292;
     padding: 25px;
     margin: 10px;
+    border-style: solid;
+    border-color: #929292;
+    margin-top: 40px;
+    margin-left: 30px;
   }
 
 .box .details {
     text-align: center;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
-  
-.box .labels {
-    text-align: center;
+.price {
+    font-weight: bold;
+    padding-top: 0px;
 }
+
 .position-bottom {
     position: absolute;
     bottom: 0;
     left: 0;
+    margin-bottom: 30px;
+}
+
+.position-parent {
+    position: relative;
 }
 
 .show-more {
     width: 1000px;
     margin: 0 auto;
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
 a:hover {
@@ -67,5 +86,10 @@ button:hover {
 
 .check {
     color: #92d36e;
+    font-size: 27px;
+    vertical-align: text-bottom;
+}
+
+.arrow {
     font-size: 24px;
 }

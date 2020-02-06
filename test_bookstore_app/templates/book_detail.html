@@ -19,14 +19,14 @@
             <span class = "details" id = "author"> {{ author }}</span>
         </div>
         <div class = "grid-x grid-padding-x">
-            <div class = "small-6 cell">
+            <div class = "small-8 cell">
                 <div class = "box"> 
-                    <span class = "details" id = "price"> {{ price }}</span>
-                    <p class = "labels">Digital</p>
+                    <p class = "details">Digital</p>
+                    <span class = "details price" id = "price"> {{ price }}</span>
                 </div>
             </div>
-            <div class = "small-6 cell">
-                <div>
+            <div class = "small-4 cell position-parent">
+                <div class= "position-bottom">
                     <span class = "labels">Release Date </span>
                     <span class = "details" id = "release_date"> {{ release_date }}</span>
                 </div>
@@ -55,12 +55,13 @@
                     <span class = "details" id = "description"> {{ description }}</span>
                 </div>
             </div>
-                <button class = "labels show-more">Show More</button>
+                <button class = "labels show-more">Show More <span class = "arrow">&#709</span></button>
+                
         </div>
         <hr/>
         <div>
             <div class = "grid-x grid-padding-x">
-                <div class = "small-4 cell">
+                <div class = "small-5 cell">
                     <span class = "labels">Series </span>
                     <span class = "details" id = "series"> {{ series }}</span>
                 </div>
@@ -68,7 +69,7 @@
                     <span class = "labels">Volume Number </span>
                     <span class = "details" id = "volume_number"> {{ volume_number }}</span>
                 </div>
-                <div class = "small-5 cell">
+                <div class = "small-4 cell">
                     <span class = "labels">Book ID </span>
                     <span class = "details" id = "book_id"> {{ book_id }}</span>
                 </div>
