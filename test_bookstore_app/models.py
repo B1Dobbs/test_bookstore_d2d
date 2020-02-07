@@ -16,8 +16,8 @@ class Book(models.Model):
     release_date = models.DateField('release date')
     availability = models.BooleanField()
     description = models.CharField(max_length=1024)
-    series = models.CharField(max_length=250)
-    vol_num = models.IntegerField()
+    series = models.CharField(max_length=250, blank=True)
+    vol_num = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.title + " (" + self.isbn + ")"
