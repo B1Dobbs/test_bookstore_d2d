@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import OnixFile
+from .validators import validate_xml
 
-class FileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = OnixFile
-        fields = "__all__"
+class XMLFileSerializer(serializers.Serializer):
+    onix_file = serializers.FileField(validators=[validate_xml])
