@@ -1,0 +1,14 @@
+/* Our navy color */
+/* #1B255A */
+
+.title_bar {
+    overflow: hidden;
+    background-color: #1B255A;
+}
+
+.title_bar h1{
+    color: white;
+    padding: 5px 20px;
+    text-decoration: none;
+    font-size: 24px;
+}
