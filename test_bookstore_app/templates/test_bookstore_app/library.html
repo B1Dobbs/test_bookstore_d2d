@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/library.css' %}">
-<html>
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto&display=swap" rel="stylesheet"><html>
     <head>
     </head>
 
     <div class="title_bar">
         <h1>Test Bookstore</h1>
     </div>
+    <br>
 
     {% if book_list %}
-        <ul>
+    <div class="book_filters">
         <table>
-            <tr>
+            <tr class="headers">
                 <th>Title</th>
                 <th>Authors</th>
                 <th>ISBN</th>
-                <th>Availability</th>
+                <th class="avail">Availability</th>
             </tr>
-        {% for book in book_list %}
-        <tr>    
-            <td><a href="/library/{{ book.isbn }}/">{{ book.title }}</a></td>
-            <td>{{book.isbn}}</td>
-        </tr>
-        {% endfor %}
+            {% for book in book_list %}
+                <tr>    
+                    <td><a href="/library/{{ book.isbn }}/">{{ book.title }}</a></td>
+                    <td>{{book.authors.name}}</td>
+                    <td>{{book.isbn}}</td>
+                    <td class="avail">{{book.availability}}</td>
+                </tr>
+            {% endfor %}
         </table>
-        </ul>
+    </div>
     {% else %}
         <p>No books are available.</p>
     {% endif %}
 
-<html>
+</html>
