@@ -14,22 +14,22 @@
 
 .title_bar h1{
     color: white;
-    padding: 5px 35px;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 20px;
+    margin-left: 20px;
     width: 100%;
     font-family: 'Playfair Display', serif;
 }
 
 
 .book_filters{
-    padding: 55px;
+    margin: 55px;
+    margin-top: 40px;
 }
 
 .book_filters table{
     border-collapse: collapse;
     width: 100%;
-    margin: 50px auto;
 }
 
 .book_filters tr{
@@ -68,4 +68,35 @@
     font-size: 11px;
     color: gray;
     font-weight: 100;
+}
+
+
+.search_bar{
+    text-align: center;
+    margin-top: 90px;
+    border: lightgray;
+    margin-left: 55px;
+    margin-right: 55px;
+}
+
+.search_bar input{
+    width: 200px;
+    font-size: 11px;
+    padding: 11px;
+}
+
+.search_bar button{
+    font-family: 'Roboto', sans-serif;
+    font-size: 9px;
+    padding: 13px;
+    width: 70px;
+    font-weight: normal;
+    background-color:#FF5722 ;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.search_bar button:hover{
+    background-color: rgb(238, 81, 34);
 }
