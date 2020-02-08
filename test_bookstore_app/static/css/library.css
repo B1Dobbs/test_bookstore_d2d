@@ -23,7 +23,7 @@
 
 
 .book_filters{
-    padding: 60px;
+    padding: 55px;
 }
 
 .book_filters table{
@@ -34,7 +34,7 @@
 
 .book_filters tr{
     font-family: 'Roboto', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     color: #1B255A;
     font-weight: 100;
     border-color: gray!important;
@@ -50,7 +50,8 @@
 .book_filters th{
     text-align: left;
     font-weight: 100;
-    padding-bottom: 8px;
+    padding-bottom: 5px;
+    font-size: 13px;
 }
 
 .book_filters td{
