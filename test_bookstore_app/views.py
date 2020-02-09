@@ -8,10 +8,14 @@ from .models import Book
 # Create your views here.
 def library(request):
     template = loader.get_template('test_bookstore_app/library.html')
-    #try:
-    book_list = Book.objects.all()
-    #except Book.DoesNotExist:
-        #raise Http404("No books are in the library")
+    sort = request.GET.get('sort', 'title')
+    
+    if sort.startswith('-'):
+        sort = '' + sort
+    else:
+        sort = '-' + sort
+
+    book_list = Book.objects.all().order_by(sort)
     context = {
         'book_list': book_list,
     }

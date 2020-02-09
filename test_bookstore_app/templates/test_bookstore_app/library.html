@@ -14,10 +14,10 @@
     <div class="book_filters">
         <table>
             <tr class="headers">
-                <th>Title</th>
-                <th>Authors</th>
-                <th>ISBN</th>
-                <th class="avail">Availability</th>
+                <th><a href="?sort=title"> Title </a></th>
+                <th><a href="?sort=authors__name"> Authors </a></th>
+                <th> ISBN </th>
+                <th class="avail"><a href="?sort=-availability"> Availability </a></th>
             </tr>
             {% for book in book_list %}
                 <tr>    
