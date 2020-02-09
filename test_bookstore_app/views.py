@@ -23,4 +23,4 @@ class BookDetailView(DetailView):
     def get(self, request, *args, **kwargs):
         book = get_object_or_404(Book, pk=kwargs['pk'])
         context = {'book': book}
-        return render(request, 'books/book_detail.html', context)
+        return render(request, 'test_bookstore_app/book_detail.html', context)
