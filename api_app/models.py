@@ -16,7 +16,7 @@ class SingletonModel(models.Model):
 
     @classmethod
     def load(cls):
-        obj, created = cls.Objects.get_or_create(pk=1)
+        obj, created = cls.objects.get_or_create(pk=1)
         return obj
 
 class OnixFile(SingletonModel):
