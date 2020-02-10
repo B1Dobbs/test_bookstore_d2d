@@ -128,27 +128,31 @@ def get_price(product_root):
 def process_products(root):
     result = xpath_ns(root,"//Product") 
     for product in result:
-        print("\nBook: ")
+        #print("\nBook: ")
         book = Book()
         book.isbn = get_isbn_13(product)  
-        print(get_isbn_13(product))  
+        #print(get_isbn_13(product))  
 
         collection = get_collection(product)
         if 'title' in collection.keys():
             book.series = collection['title']
-            print(collection['title'])
+            #print(collection['title'])
         if 'num' in collection.keys():
             book.vol_num = collection['num']
-            print(collection['num'])
+            #print(collection['num'])
 
         book.title = get_title(product)
-        print(get_title(product))
+        #print(get_title(product))
 
-        #book.authors = get_contributors(product)
-        print(get_contributors(product))
+        authors = ""
+
+        for author in get_contributors(product):
+            authors += ", " + author
+        book.authors = authors
+        #print(get_contributors(product))
 
         book.language = get_language(product)
-        print(get_language(product))
+        #print(get_language(product))
 
         book.description = get_detail(product)
         #print(get_detail(product))
@@ -156,13 +160,13 @@ def process_products(root):
         isAvailable = get_availability(product)
         if isAvailable != -1:
             book.availability = isAvailable
-            print(get_availability(product))
+            #print(get_availability(product))
 
         book.release_date = get_publish_date(product)
-        print(get_publish_date(product))
+        #print(get_publish_date(product))
 
         book.price = get_price(product)
-        print(get_price(product))
+        #print(get_price(product))
 
         book.save()
 

@@ -27,10 +27,9 @@ class FileProcessView(APIView):
         """
         API to process ONIX File
         """
-        #TODO: call process onix here
-        #process_onix(File.file)
+        onix_parser.process_onix(OnixFile.load().get_path())
 
         #Test API call
-        onix_parser.process_onix("C:/Users/brooke.dobbins/Documents/SE5/test_bookstore_d2d/api_app/resources/large_example.xml")
+        #onix_parser.process_onix("C:/Users/brooke.dobbins/Documents/SE5/test_bookstore_d2d/api_app/resources/large_example.xml")
         return JsonResponse({'note': 'Processing Onix'})
 
