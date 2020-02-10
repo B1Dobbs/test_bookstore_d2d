@@ -14,22 +14,22 @@
 
 .title_bar h1{
     color: white;
-    padding: 5px 35px;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 20px;
+    margin-left: 20px;
     width: 100%;
     font-family: 'Playfair Display', serif;
 }
 
 
 .book_filters{
-    padding: 55px;
+    margin: 55px;
+    margin-top: 40px;
 }
 
 .book_filters table{
     border-collapse: collapse;
     width: 100%;
-    margin: 50px auto;
 }
 
 .book_filters tr{
