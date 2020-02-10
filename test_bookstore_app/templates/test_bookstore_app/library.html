@@ -14,10 +14,17 @@
     <div class="book_filters">
         <table>
             <tr class="headers">
-                <th><a href="?sort=title"> Title </a></th>
-                <th><a href="?sort=authors__name"> Authors </a></th>
-                <th> ISBN </th>
-                <th class="avail"><a href="?sort=-availability"> Availability </a></th>
+                {% if desc == "-" %}
+                    <th><a href="?sort=title"> Title </a></th>
+                    <th><a href="?sort=authors__name"> Authors </a></th>
+                    <th> ISBN </th>
+                    <th class="avail"><a href="?sort=availability"> Availability </a></th>
+                {% else %}
+                    <th><a href="?sort=-title"> Title </a></th>
+                    <th><a href="?sort=-authors__name"> Authors </a></th>
+                    <th> ISBN </th>
+                    <th class="avail"><a href="?sort=-availability"> Availability </a></th>
+                {% endif %}
             </tr>
             {% for book in book_list %}
                 <tr>    

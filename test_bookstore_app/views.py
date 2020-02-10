@@ -9,15 +9,11 @@ from .models import Book
 def library(request):
     template = loader.get_template('test_bookstore_app/library.html')
     sort = request.GET.get('sort', 'title')
-    
-    if sort.startswith('-'):
-        sort = '' + sort
-    else:
-        sort = '-' + sort
-
+    desc = sort[0]
     book_list = Book.objects.all().order_by(sort)
     context = {
         'book_list': book_list,
+        'desc': desc,
     }
     return HttpResponse(template.render(context, request))
 
