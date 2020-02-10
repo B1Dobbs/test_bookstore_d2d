@@ -8,6 +8,7 @@
     <div class="title_bar">
         <h1>Test Bookstore</h1>
     </div>
+    
     <br>
 
     {% if book_list %}
@@ -33,4 +34,10 @@
         <p>No books are available.</p>
     {% endif %}
 
+
+<h1>Search</h1>
+
+<form action="{% url 'search_results' %}" method="get">
+  <input name="q" type="text" placeholder="Search...">
+</form>
 </html>

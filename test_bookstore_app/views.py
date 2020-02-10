@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from django.views.generic.detail import DetailView
+from django.views.generic import TemplateView, ListView
 from django.shortcuts import get_object_or_404
 from .models import Book
+from django.db.models import Q
 
 # Create your views here.
 def library(request):
@@ -24,3 +26,14 @@ class BookDetailView(DetailView):
         book = get_object_or_404(Book, pk=kwargs['pk'])
         context = {'book': book}
         return render(request, 'test_bookstore_app/book_detail.html', context)
+
+class SearchResultsView(ListView):
+    model = Book
+    template_name = 'test_bookstore_app/search_results.html'    
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Book.objects.filter(
+            Q(title__icontains=query) | Q(isbn__icontains=query)
+        )
+        return object_list
+
