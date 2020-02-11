@@ -23,3 +23,6 @@ class OnixFile(SingletonModel):
     onix_file = models.FileField(blank=False, null=False)
     def __str__(self):
         return self.onix_file.name
+
+    def get_path(self):
+        return self.onix_file.path
