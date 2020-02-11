@@ -24,17 +24,23 @@
         <div class="book_filters">
             <table>
                 <tr class="headers">
-                    <th>Title</th>
-                    <th>Authors</th>
+                    <th>Title<i class="fas fa-angle-down filterArrow"></i></th>
+                    <th>Authors<i class="fas fa-angle-down filterArrow"></i></th>
                     <th>ISBN</th>
-                    <th class="avail">Availability</th>
+                    <th class="avail">Availability<i class="fas fa-angle-down filterArrow"></i></th>
                 </tr>
                 {% for book in book_list %}
                     <tr>    
                         <td><a href="/library/{{ book.isbn }}/">{{ book.title }}</a></td>
                         <td>{{book.authors.name}}</td>
                         <td>{{book.isbn}}</td>
-                        <td class="avail">{{book.availability}}</td>
+                        <td class="avail">
+                            {% if book.availability %}
+                                <i class="fas fa-check-circle check"></i>
+                            {% else %}
+                                <i class="fa fa-times-circle xmark"></i>
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
             </table>
