@@ -1,0 +1,110 @@
+body {
+    background-color: #FFFFFF;
+}
+
+hr {
+    border-bottom-color: black;
+    height: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+span .more-text {
+    display: none;
+}
+
+.labels {
+    font-size: 22px;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #929292;
+    padding-right: 10px;
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    font-size: 35px;
+    color: #1c2559;
+    padding-top: 50px;
+}
+
+.details {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    color: #1c2559;
+    text-align: right;
+}
+
+.details-block {
+    width: 1000px;
+    padding-top: 50px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+div .box{
+    background-color: #f7f6f6;
+    width: 120px;
+    height: 120px;
+    outline: 15px #929292;
+    padding: 25px;
+    margin: 10px;
+    border-style: solid;
+    border-color: #929292;
+    margin-top: 40px;
+    margin-left: 30px;
+  }
+
+.box .details {
+    text-align: center;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+.price {
+    font-weight: bold;
+    padding-top: 0px;
+}
+
+.position-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 30px;
+}
+
+.position-parent {
+    position: relative;
+}
+
+.show-more {
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 20px;
+    outline: none;
+}
+
+a:hover {
+    color: #ef320a;
+}
+
+button:hover {
+    color: #ef320a;
+    cursor: pointer;
+}
+
+.check {
+    color: #92d36e;
+    font-size: 27px;
+    vertical-align: text-bottom;
+}
+
+.x-mark {
+    color: #ff3823;
+    font-size: 27px;
+    vertical-align: text-bottom;
+}
+
+.arrow {
+    font-size: 24px;
+}

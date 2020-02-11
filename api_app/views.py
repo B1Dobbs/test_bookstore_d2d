@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from .serializers import XMLFileSerializer
-import onixcheck
 from .models import OnixFile
+import onixcheck
 from .utils import OnixParser
 from django.http import JsonResponse
 
@@ -15,18 +15,26 @@ class FileUploadView(APIView):
 
     def post(self, request, *args, **kwargs):
 
-        onix_file = request.data['onix_file']
+        singleton_instance = OnixFile.objects.get(id=1)
+        file_serializer = XMLFileSerializer(instance=singleton_instance, data=request.data)
 
-        print(request.data['onix_file'])
+        if(file_serializer.is_valid()):
+            
+            onix_file = request.data['onix_file']
+            onix_errors = onixcheck.validate(onix_file)
+            if len(onix_errors) > 0:
+                file_serializer.save()
+                print("Onix Errors")
+                return Response(onix_errors, status=status.HTTP_400_BAD_REQUEST)
+
+            else:
+                file_serializer.save()
+                print(OnixFile.load())
+                return Response(OnixFile.load().__str__(), status=status.HTTP_201_CREATED)
         
-        onix_errors = onixcheck.validate(onix_file)
-
-        if len(onix_errors) > 0:
-            print("Onix Errors")
-            return Response(onix_errors, status=status.HTTP_400_BAD_REQUEST)
         else:
-            return Response("Success", status=status.HTTP_201_CREATED) 
-        
+            return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class FileProcessView(APIView):
     
