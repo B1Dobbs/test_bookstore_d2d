@@ -2,4 +2,4 @@
 *.pyc
 media/
 db.sqlite3
-*/__pycache__/
+api_app/resources/
