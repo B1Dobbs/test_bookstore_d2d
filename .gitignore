@@ -2,5 +2,8 @@
 *.pyc
 api_app/resources
 api_app/migrations
+api_app/__pycache__
 test_bookstore_app/migrations
+media/
+test_bookstore_app/__pycache__
 *.sqlite3
