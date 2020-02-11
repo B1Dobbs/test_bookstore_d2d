@@ -5,13 +5,28 @@ body {
 hr {
     border-bottom-color: black;
     height: 5px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    width: 100%;
+    margin: 0px;
+    padding: 10px;
+    text-align: center;
 }
 
+.details-block {
+    width: 80%;
+    padding-top: 50px;
+    margin: auto;
+    margin-top: 50px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+}
 
 span .more-text {
     display: none;
+}
+
+.padding {
+    padding-top: 20px;
 }
 
 .labels {
@@ -26,21 +41,13 @@ span .more-text {
     font-weight: bold;
     font-size: 35px;
     color: #1c2559;
-    padding-top: 50px;
 }
 
 .details {
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
     color: #1c2559;
-    text-align: right;
-}
-
-.details-block {
-    width: 1000px;
-    padding-top: 50px;
-    margin: 0 auto;
-    margin-top: 50px;
+    text-align: left;
 }
 
 div .box{
@@ -54,6 +61,7 @@ div .box{
     border-color: #929292;
     margin-top: 40px;
     margin-left: 30px;
+    padding-bottom: 10px;
   }
 
 .box .details {
@@ -71,14 +79,16 @@ div .box{
     bottom: 0;
     left: 0;
     margin-bottom: 30px;
+    padding-left: 10px;
 }
 
 .position-parent {
     position: relative;
+    padding-top: 30px;
 }
 
 .show-more {
-    width: 1000px;
+    width: 100%;
     margin: 0 auto;
     padding-top: 20px;
     outline: none;
@@ -107,4 +117,18 @@ button:hover {
 
 .arrow {
     font-size: 24px;
+}
+
+.description {
+    width: 100%;
+    display: block;
+    margin-right: 100px;
+}
+
+.filterArrow{
+    color: #1B255A;
+    margin-left: 5px;
+    font-size: 15px;
+    position: relative;
+    top: 2px;
 }
