@@ -100,3 +100,10 @@
 .search_bar button:hover{
     background-color: rgb(238, 81, 34);
 }
+
+.magGlass{
+    margin-right: 5px;
+    font-size: 10px;
+    position: relative;
+    margin-top: 2px;
+}
