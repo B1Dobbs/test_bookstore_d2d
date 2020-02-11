@@ -20,7 +20,7 @@ class SingletonModel(models.Model):
         return obj
 
 class OnixFile(SingletonModel):
-    onix_file = models.FileField(blank=False, null=False, validators=[validate_xml])
+    onix_file = models.FileField(blank=False, null=False)
     def __str__(self):
         return self.onix_file.name
 

@@ -1,10 +1,10 @@
 .vscode
 *.pyc
 api_app/resources
+api_app/__pycache__
 api_app/migrations
 test_bookstore_app/migrations
-*.sqlite3
-media/
-db.sqlite3
 test_bookstore_app/__pycache__
-test_bookstore/__pycache__
+db.sqlite3
+media/
+api_app/utils/__pycache__
