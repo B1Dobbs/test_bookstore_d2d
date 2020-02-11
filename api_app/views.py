@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from .serializers import XMLFileSerializer
 from .models import OnixFile
+import onixcheck
 from django.http import JsonResponse
 from .utils import onix_parser
 
