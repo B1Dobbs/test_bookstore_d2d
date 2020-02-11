@@ -7,7 +7,7 @@ from .models import Book
 
 # Create your views here.
 def library(request):
-    template = loader.get_template('test_bookstore_app/library.html')
+    template = loader.get_template('library.html')
     sort = request.GET.get('sort', 'title')
     desc = sort[0]
     book_list = Book.objects.all().order_by(sort)
@@ -19,8 +19,8 @@ def library(request):
 
 class BookDetailView(DetailView):
     model = Book
-    template = loader.get_template('test_bookstore_app/book_detail.html')
+    template = loader.get_template('book_detail.html')
     def get(self, request, *args, **kwargs):
         book = get_object_or_404(Book, pk=kwargs['pk'])
         context = {'book': book}
-        return render(request, 'books/book_detail.html', context)
+        return render(request, 'test_bookstore_app/book_detail.html', context)

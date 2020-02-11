@@ -14,22 +14,22 @@
 
 .title_bar h1{
     color: white;
-    padding: 5px 35px;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 20px;
+    margin-left: 20px;
     width: 100%;
     font-family: 'Playfair Display', serif;
 }
 
 
 .book_filters{
-    padding: 55px;
+    margin: 55px;
+    margin-top: 40px;
 }
 
 .book_filters table{
     border-collapse: collapse;
     width: 100%;
-    margin: 50px auto;
 }
 
 .book_filters tr{
@@ -51,7 +51,7 @@
     text-align: left;
     font-weight: 100;
     padding-bottom: 5px;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .book_filters td{
@@ -68,4 +68,61 @@
     font-size: 11px;
     color: gray;
     font-weight: 100;
+}
+
+.check{
+    color: #92d36e;
+    font-size: 27;
+}
+
+.xmark{
+    color: #ff3823;
+    font-size: 27;
+}
+
+
+.filterArrow{
+    color: #1B255A;
+    margin-left: 5px;
+    font-size: 15px;
+    position: relative;
+    top: 2px;
+}
+
+
+.search_bar{
+    text-align: center;
+    margin-top: 90px;
+    border: lightgray;
+    margin-left: 55px;
+    margin-right: 55px;
+}
+
+.search_bar input{
+    width: 260px;
+    font-size: 11px;
+    padding: 11px;
+}
+
+.search_bar button{
+    font-family: 'Roboto', sans-serif;
+    font-size: 9px;
+    padding: 13px;
+    width: 80px;
+    font-weight: normal;
+    background-color:#FF5722 ;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.search_bar button:hover{
+    background-color: rgb(238, 81, 34);
+}
+
+.magGlass{
+    margin-right: 5px;
+    font-size: 10px;
+    position: relative;
+    margin-top: 2px;
 }
