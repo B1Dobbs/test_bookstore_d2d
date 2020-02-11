@@ -3,11 +3,10 @@ from rest_framework.parsers import FileUploadParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-from .serializers import XMLFileSerializer
+from .serializers import FileSerializer
 from .models import OnixFile
-import onixcheck
-from .utils import OnixParser
 from django.http import JsonResponse
+from .utils import onix_parser
 
 
 class FileUploadView(APIView):
@@ -42,7 +41,9 @@ class FileProcessView(APIView):
         """
         API to process ONIX File
         """
-        #TODO: call process onix here
-        #process_onix(File.file)
+        onix_parser.process_onix(OnixFile.load().get_path())
+
+        #Test API call
+        #onix_parser.process_onix("C:/Users/brooke.dobbins/Documents/SE5/test_bookstore_d2d/api_app/resources/large_example.xml")
         return JsonResponse({'note': 'Processing Onix'})
 
