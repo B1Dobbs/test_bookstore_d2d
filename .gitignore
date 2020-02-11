@@ -2,3 +2,6 @@
 *.pyc 
 api_app\migrations
 test_bookstore_app\migrations
+test_bookstore/__pycache__/
+test_bookstore_app/__pycache__/
+

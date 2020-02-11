@@ -1,36 +1,53 @@
 <!DOCTYPE html>
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/library.css' %}">
-<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto&display=swap" rel="stylesheet"><html>
+<!-- class="fas fa-check-circle" -->
+<!-- class="fas fa-times-circle" -->
+
+<html>
     <head>
-    </head>
+        <link rel="stylesheet" href="{% static 'css/library.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css%22%3E" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/92ed4f50f3.js" crossorigin="anonymous"></script>
+    </head>    
 
-    <div class="title_bar">
-        <h1>Test Bookstore</h1>
-    </div>
-    <br>
 
-    {% if book_list %}
-    <div class="book_filters">
-        <table>
-            <tr class="headers">
-                <th>Title</th>
-                <th>Authors</th>
-                <th>ISBN</th>
-                <th class="avail">Availability</th>
-            </tr>
-            {% for book in book_list %}
-                <tr>    
-                    <td><a href="/library/{{ book.isbn }}/">{{ book.title }}</a></td>
-                    <td>{{book.authors.name}}</td>
-                    <td>{{book.isbn}}</td>
-                    <td class="avail">{{book.availability}}</td>
+    <body>
+        <div class="title_bar">
+            <h1>Test Bookstore</h1>
+        </div>
+        <br>
+
+        
+        {% if book_list %}
+        <div class="book_filters">
+            <table>
+                <tr class="headers">
+                    <th>Title</th>
+                    <th>Authors</th>
+                    <th>ISBN</th>
+                    <th class="avail">Availability</th>
                 </tr>
-            {% endfor %}
-        </table>
-    </div>
-    {% else %}
-        <p>No books are available.</p>
-    {% endif %}
+                {% for book in book_list %}
+                    <tr>    
+                        <td><a href="/library/{{ book.isbn }}/">{{ book.title }}</a></td>
+                        <td>{{book.authors.name}}</td>
+                        <td>{{book.isbn}}</td>
+                        <td class="avail">
+                            {% if book.availability %}
+                                <i class="fas fa-check-circle check"></i>
+                            {% else %}
+                                <i class="fa fa-times-circle xmark"></i>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% else %}
+            <p>No books are available.</p>
+        {% endif %}
+
+    </body>
 
 </html>

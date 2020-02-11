@@ -69,3 +69,14 @@
     color: gray;
     font-weight: 100;
 }
+
+.check{
+    color: #92d36e;
+    font-size: 27;
+}
+
+.xmark{
+    color: #ff3823;
+    font-size: 27;
+}
+
