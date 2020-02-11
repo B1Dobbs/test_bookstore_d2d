@@ -51,7 +51,7 @@
     text-align: left;
     font-weight: 100;
     padding-bottom: 5px;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .book_filters td{
@@ -68,6 +68,25 @@
     font-size: 11px;
     color: gray;
     font-weight: 100;
+}
+
+.check{
+    color: #92d36e;
+    font-size: 27;
+}
+
+.xmark{
+    color: #ff3823;
+    font-size: 27;
+}
+
+
+.filterArrow{
+    color: #1B255A;
+    margin-left: 5px;
+    font-size: 15px;
+    position: relative;
+    top: 2px;
 }
 
 
