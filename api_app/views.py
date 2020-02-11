@@ -43,8 +43,7 @@ class FileProcessView(APIView):
         API to process ONIX File
         """
         onix_parser.process_onix(OnixFile.load().get_path())
-
+        
         #Test API call
         #onix_parser.process_onix("C:/Users/brooke.dobbins/Documents/SE5/test_bookstore_d2d/api_app/resources/large_example.xml")
-        return JsonResponse({'note': 'Processing Onix'})
-
+        return Response("Processing Onix", status=status.HTTP_202_ACCEPTED)
