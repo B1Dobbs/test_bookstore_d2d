@@ -7,7 +7,7 @@ from .models import Book
 
 # Create your views here.
 def library(request):
-    template = loader.get_template('test_bookstore_app/library.html')
+    template = loader.get_template('library.html')
     #try:
     book_list = Book.objects.all()
     #except Book.DoesNotExist:
@@ -19,7 +19,7 @@ def library(request):
 
 class BookDetailView(DetailView):
     model = Book
-    template = loader.get_template('test_bookstore_app/book_detail.html')
+    template = loader.get_template('book_detail.html')
     def get(self, request, *args, **kwargs):
         book = get_object_or_404(Book, pk=kwargs['pk'])
         context = {'book': book}
