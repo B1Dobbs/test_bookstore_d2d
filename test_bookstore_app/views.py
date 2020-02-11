@@ -5,14 +5,11 @@ from rest_framework.views import APIView
 from rest_framework import status
 from django.http import HttpResponse
 from django.template import loader
-<<<<<<< HEAD
 from django.views.generic.detail import DetailView
 from django.views.generic import TemplateView, ListView
 from django.shortcuts import get_object_or_404
 from .models import Book
 from django.db.models import Q
-=======
->>>>>>> development
 
 def book_list(request):
     return HttpResponse("Hello, you are on the book list page")
@@ -53,7 +50,6 @@ def library(request):
         'book_list': book_list,
     }
     return HttpResponse(template.render(context, request))
-<<<<<<< HEAD
 
 class BookDetailView(DetailView):
     model = Book
@@ -73,5 +69,3 @@ class SearchResultsView(ListView):
         )
         return object_list
 
-=======
->>>>>>> development
