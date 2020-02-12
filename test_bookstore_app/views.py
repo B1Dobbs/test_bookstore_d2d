@@ -13,7 +13,7 @@ def library(request):
     desc = sort[0]
     book_list = Book.objects.all().order_by(sort)
 
-    paginator = Paginator(book_list, 2)
+    paginator = Paginator(book_list, 10)
     page = request.GET.get('page')
     book_list = paginator.get_page(page)
     context = {
