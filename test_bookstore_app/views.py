@@ -15,6 +15,7 @@ from django.core.paginator import *
 def library(request):
     template = loader.get_template('library.html')
     sort = request.GET.get('sort', 'title')
+    search = request.GET.get('q', '')
     desc = sort[0]
     book_list = Book.objects.all().order_by(sort)
 
@@ -24,6 +25,7 @@ def library(request):
     context = {
         'book_list': book_list,
         'desc': desc,
+        'searchRequest': search,
     }
     return HttpResponse(template.render(context, request))
 

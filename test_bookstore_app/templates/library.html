@@ -29,15 +29,15 @@
                 <table>
                     <tr class="headers">
                         {% if desc == "-" %}
-                        <th><a href="?sort=title">Title<i class="fas fa-angle-down filterArrow"></i></a></th>
-                        <th><a href="?sort=authors__name">Authors<i class="fas fa-angle-down filterArrow"></i></a></th>
-                        <th>ISBN</th>
-                        <th class="avail"><a href="?sort=availability">Availability<i class="fas fa-angle-down filterArrow"></i></a></th>
+                            <th><a href="{{ request.get_full_path }}&sort=title">Title<i class="fas fa-angle-down filterArrow"></i></a></th>
+                            <th><a href="{{ request.get_full_path }}&sort=authors">Authors<i class="fas fa-angle-down filterArrow"></i></a></th>
+                            <th>ISBN</th>
+                            <th class="avail"><a href="?sort=availability">Availability<i class="fas fa-angle-down filterArrow"></i></a></th>
                         {% else %}
-                        <th><a href="?sort=-title">Title<i class="fas fa-angle-down filterArrow"></i></a></th>
-                        <th><a href="?sort=-authors__name">Authors<i class="fas fa-angle-down filterArrow"></i></a></th>
-                        <th>ISBN</th>
-                        <th class="avail"><a href="?sort=-availability">Availability<i class="fas fa-angle-down filterArrow"></i></a></th>
+                            <th><a href="{{ request.get_full_path }}&sort=-title">Title<i class="fas fa-angle-down filterArrow"></i></a></th>
+                            <th><a href="{{ request.get_full_path }}&sort=-authors">Authors<i class="fas fa-angle-down filterArrow"></i></a></th>
+                            <th>ISBN</th>
+                            <th class="avail"><a href="?sort=-availability">Availability<i class="fas fa-angle-down filterArrow"></i></a></th>
                         {% endif %}
                     </tr>
                     {% for book in book_list %}
