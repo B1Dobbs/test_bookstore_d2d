@@ -168,12 +168,20 @@
 
 .next{
     margin-left: 15px;
-    margin-right: 10px;
+    margin-right: 5px;
     cursor: pointer;
+}
+
+.next:hover{
+    color: #FF5722;
 }
 
 .prev{
     margin-right: 15px;
-    margin-left: 10px;
+    margin-left: 5px;
     cursor: pointer;
+}
+
+.prev:hover{
+    color: #FF5722;
 }
