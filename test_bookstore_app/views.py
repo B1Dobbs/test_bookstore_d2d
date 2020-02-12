@@ -28,10 +28,10 @@ class BookDetailView(DetailView):
 
 class SearchResultsView(ListView):
     model = Book
-    template_name = 'search_results.html'    
+    template_name = 'library.html'    
     def get_queryset(self):
         query = self.request.GET.get('q')
-        object_list = Book.objects.filter(
+        book_list = Book.objects.filter(
             Q(title__icontains=query) | Q(isbn__icontains=query)
         )
-        return object_list
+        return book_list
