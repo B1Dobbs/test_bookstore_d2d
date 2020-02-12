@@ -144,11 +144,11 @@ def process_products(root):
         book.title = get_title(product)
         #print(get_title(product))
 
-        authors = ""
-
-        for author in get_contributors(product):
-            authors += ", " + author
-        book.authors = authors
+        authors = get_contributors(product)
+        authors_str = authors[0]
+        for x in range(1, len(authors)):
+            author_str += ", " + authors[x]
+        book.authors = authors_str
         #print(get_contributors(product))
 
         book.language = get_language(product)
