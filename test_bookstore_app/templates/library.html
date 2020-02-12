@@ -16,7 +16,7 @@
         <br>
 
         <div class="search_bar">
-            <form action="{% url 'search_results' %}" method="get">
+            <form action="?q={{desc}}" method="get">
                 <input name ="q" type="text" placeholder="Enter a title, author, or ISBN here..">
                 <button type="submit"><i class="fas fa-search magGlass"></i>SEARCH</button>
             </form>
@@ -29,15 +29,15 @@
                 <table>
                     <tr class="headers">
                         {% if desc == "-" %}
-                            <th><a href="{{ request.get_full_path }}&sort=title">Title<i class="fas fa-angle-down filterArrow"></i></a></th>
-                            <th><a href="{{ request.get_full_path }}&sort=authors">Authors<i class="fas fa-angle-down filterArrow"></i></a></th>
+                            <th><a href="?page={{page}}&q={{query}}&sort=title">Title<i class="fas fa-angle-down filterArrow"></i></a></th>
+                            <th><a href="?page={{page}}&q={{query}}&sort=authors">Authors<i class="fas fa-angle-down filterArrow"></i></a></th>
                             <th>ISBN</th>
-                            <th class="avail"><a href="?sort=availability">Availability<i class="fas fa-angle-down filterArrow"></i></a></th>
+                            <th class="avail"><a href="?page={{page}}&q={{query}}&sort=availability">Availability<i class="fas fa-angle-down filterArrow"></i></a></th>
                         {% else %}
-                            <th><a href="{{ request.get_full_path }}&sort=-title">Title<i class="fas fa-angle-down filterArrow"></i></a></th>
-                            <th><a href="{{ request.get_full_path }}&sort=-authors">Authors<i class="fas fa-angle-down filterArrow"></i></a></th>
+                            <th><a href="?page={{page}}&q={{query}}&sort=-title">Title<i class="fas fa-angle-down filterArrow"></i></a></th>
+                            <th><a href="?page={{page}}&q={{query}}&sort=-authors">Authors<i class="fas fa-angle-down filterArrow"></i></a></th>
                             <th>ISBN</th>
-                            <th class="avail"><a href="?sort=-availability">Availability<i class="fas fa-angle-down filterArrow"></i></a></th>
+                            <th class="avail"><a href="?page={{page}}&q={{query}}&sort=-availability">Availability<i class="fas fa-angle-down filterArrow"></i></a></th>
                         {% endif %}
                     </tr>
                     {% for book in book_list %}

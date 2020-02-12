@@ -14,18 +14,28 @@ from django.core.paginator import *
 # Create your views here.
 def library(request):
     template = loader.get_template('library.html')
-    sort = request.GET.get('sort', 'title')
-    search = request.GET.get('q', '')
-    desc = sort[0]
-    book_list = Book.objects.all().order_by(sort)
 
+    # Get Sorting parameters for context
+    sort = request.GET.get('sort', 'title')
+    desc = sort[0]
+
+    # Perform search query on list
+    query = request.GET.get('q')
+    book_list = Book.objects.filter(
+            Q(title__icontains=query) | Q(isbn__icontains=query ) | Q(authors__icontains=query)
+        ).order_by(sort)
+    print("query: " + query)
+
+    # Paginate the list
     paginator = Paginator(book_list, 10)
-    page = request.GET.get('page')
+    page = request.GET.get('page', '1')
     book_list = paginator.get_page(page)
+        
     context = {
         'book_list': book_list,
         'desc': desc,
-        'searchRequest': search,
+        'q': query,
+        'page': page,
     }
     return HttpResponse(template.render(context, request))
 
@@ -43,7 +53,10 @@ class SearchResultsView(ListView):
     template_name = 'library.html'    
     def get_queryset(self):
         query = self.request.GET.get('q')
+        sort = self.request.GET.get('sort', 'title')
+        desc = sort[0]
+        searchReq = query
         book_list = Book.objects.filter(
             Q(title__icontains=query) | Q(isbn__icontains=query ) | Q(authors__icontains=query)
-        )
+        ).order_by(sort)
         return book_list
