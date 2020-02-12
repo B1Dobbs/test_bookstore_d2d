@@ -7,24 +7,29 @@ from django.http import HttpResponse
 from django.template import loader
 from django.views.generic.detail import DetailView
 from django.shortcuts import get_object_or_404
-from .models import Book
+from .models import Book, Library
 from django.views.generic import TemplateView, ListView
 from django.db.models import Q
 from django.core.paginator import *
 # Create your views here.
 def library(request):
     template = loader.get_template('library.html')
+    lib = Library.objects.get(pk=1)
 
     # Get Sorting parameters for context
     sort = request.GET.get('sort', 'title')
     desc = sort[0]
 
     # Perform search query on list
-    query = request.GET.get('q')
+    if request.method == 'POST':
+        #query = request.GET.get('q')
+        lib.search = request.POST.get('q', '')
+        lib.save()
+    query = lib.search
+    print(query.name);
     book_list = Book.objects.filter(
             Q(title__icontains=query) | Q(isbn__icontains=query ) | Q(authors__icontains=query)
         ).order_by(sort)
-    print("query: " + query)
 
     # Paginate the list
     paginator = Paginator(book_list, 10)
