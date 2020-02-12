@@ -3,3 +3,6 @@
 api_app\migrations
 test_bookstore_app\migrations
 db.sqlite3
+media/
+*.sqlite3
+*/__pycache__/
