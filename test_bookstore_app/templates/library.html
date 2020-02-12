@@ -9,7 +9,7 @@
     </head>
 
     <body>
-
+        {% block content %}
         <div class="title_bar">
             <h1>Test Bookstore</h1>
         </div>
@@ -82,6 +82,7 @@
         {% else %}
             <p>No books are available.</p>
         {% endif %}
+    {% endblock %}
     </body>
 
 </html>
