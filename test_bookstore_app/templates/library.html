@@ -16,8 +16,10 @@
         <br>
 
         <div class="search_bar">
-            <input type="text" placeholder="Enter a title, author, or ISBN here.." name="search">
-            <button type="submit"><i class="fas fa-search magGlass"></i>SEARCH</button>
+            <form action="{% url 'search_results' %}" method="get">
+                <input name ="q" type="text" placeholder="Enter a title, author, or ISBN here..">
+                <button type="submit"><i class="fas fa-search magGlass"></i>SEARCH</button>
+            </form>
         </div>
 
         {% if book_list %}
