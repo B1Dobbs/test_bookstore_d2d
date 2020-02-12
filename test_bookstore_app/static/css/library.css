@@ -55,7 +55,7 @@
     font-weight: bold;
 }
 
-.book_filters a:hover{
+.book_filters .book_title:hover{
     color: #FF5722;
 }
 

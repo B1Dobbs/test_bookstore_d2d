@@ -40,7 +40,7 @@
                     </tr>
                     {% for book in book_list %}
                         <tr>    
-                            <td><a href="/library/{{ book.isbn }}/">{{ book.title }}</a></td>
+                            <td><a href="/library/{{ book.isbn }}/" class="book_title">{{ book.title }}</a></td>
                             <td>{{book.authors.name}}</td>
                             <td>{{book.isbn}}</td>
                             <td class="avail">
