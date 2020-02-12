@@ -30,10 +30,11 @@ def library(request):
 class BookDetailView(DetailView):
     model = Book
     template = loader.get_template('book_detail.html')
+    
     def get(self, request, *args, **kwargs):
         book = get_object_or_404(Book, pk=kwargs['pk'])
         context = {'book': book}
-        return render(request, 'test_bookstore_app/book_detail.html', context)
+        return render(request, 'book_detail.html', context)
 
 class SearchResultsView(ListView):
     model = Book
