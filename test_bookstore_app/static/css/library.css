@@ -55,6 +55,10 @@
     font-weight: bold;
 }
 
+.book_filters a:hover{
+    color: #FF5722;
+}
+
 .book_filters th{
     text-align: left;
     font-weight: 100;
