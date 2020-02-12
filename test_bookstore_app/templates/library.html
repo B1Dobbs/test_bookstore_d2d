@@ -4,7 +4,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="{% static 'css/library.css' %}">
-        <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto&display=swap" rel="stylesheet"><html>
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto|Roboto+Condensed&display=swap" rel="stylesheet"><html>
         <script src="https://kit.fontawesome.com/92ed4f50f3.js" crossorigin="anonymous"></script>
     </head>
 
@@ -21,37 +21,62 @@
         </div>
 
         {% if book_list %}
-        <div class="book_filters">
-            <table>
-                <tr class="headers">
-                    {% if desc == "-" %}
-                    <th><a href="?sort=title"> Title </a><i class="fas fa-angle-down filterArrow"></i></th>
-                    <th><a href="?sort=authors__name"> Authors </a><i class="fas fa-angle-down filterArrow"></i></th>
-                    <th>ISBN</th>
-                    <th class="avail"><a href="?sort=availability"> Availability </a><i class="fas fa-angle-down filterArrow"></i></th>
-                    {% else %}
-                    <th><a href="?sort=-title"> Title </a><i class="fas fa-angle-down filterArrow"></i></th>
-                    <th><a href="?sort=-authors__name"> Authors </a><i class="fas fa-angle-down filterArrow"></i></th>
-                    <th>ISBN</th>
-                    <th class="avail"><a href="?sort=-availability"> Availability </a><i class="fas fa-angle-down filterArrow"></i></th>
-                    {% endif %}
-                </tr>
-                {% for book in book_list %}
-                    <tr>    
-                        <td><a href="/library/{{ book.isbn }}/">{{ book.title }}</a></td>
-                        <td>{{book.authors.name}}</td>
-                        <td>{{book.isbn}}</td>
-                        <td class="avail">
-                            {% if book.availability %}
-                                <i class="fas fa-check-circle check"></i>
-                            {% else %}
-                                <i class="fa fa-times-circle xmark"></i>
-                            {% endif %}
-                        </td>
+
+
+            <div class="book_filters">
+                <table>
+                    <tr class="headers">
+                        {% if desc == "-" %}
+                        <th><a href="?sort=title">Title<i class="fas fa-angle-down filterArrow"></i></a></th>
+                        <th><a href="?sort=authors__name">Authors<i class="fas fa-angle-down filterArrow"></i></a></th>
+                        <th>ISBN</th>
+                        <th class="avail"><a href="?sort=availability">Availability<i class="fas fa-angle-down filterArrow"></i></a></th>
+                        {% else %}
+                        <th><a href="?sort=-title">Title<i class="fas fa-angle-down filterArrow"></i></a></th>
+                        <th><a href="?sort=-authors__name">Authors<i class="fas fa-angle-down filterArrow"></i></a></th>
+                        <th>ISBN</th>
+                        <th class="avail"><a href="?sort=-availability">Availability<i class="fas fa-angle-down filterArrow"></i></a></th>
+                        {% endif %}
                     </tr>
-                {% endfor %}
-            </table>
-        </div>
+                    {% for book in book_list %}
+                        <tr>    
+                            <td><a href="/library/{{ book.isbn }}/">{{ book.title }}</a></td>
+                            <td>{{book.authors.name}}</td>
+                            <td>{{book.isbn}}</td>
+                            <td class="avail">
+                                {% if book.availability %}
+                                    <i class="fas fa-check-circle check"></i>
+                                {% else %}
+                                    <i class="fa fa-times-circle xmark"></i>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+                <div class="pages">
+                    {% if book_list.has_previous %}
+                        <a href="?page=1">First</a>
+                        <a href="?page={{ book_list.previous_page_number}}" class="prev">Prev</a>
+                    {% endif %}
+                    
+                    {% for num in book_list.paginator.page_range %}
+                        {% if book_list.number == num %}
+                            <span class="cur_page">{{num}}</span>
+                        {% elif num > book_list.number|add:'-2' and num < book_list.number|add:'2' %}
+                            <span class="page_num">{{num}}</span>
+                        {% endif %}
+        
+                    {% endfor %}
+
+                    {% if book_list.has_next %}
+                        <a href="?page={{ book_list.next_page_number }}" class="next">Next</a>
+                        <a href="?page={{ book_list.paginator.num_pages }}">Last</a>
+
+                    {% endif %}
+                </div>
+
+            </div>
         {% else %}
             <p>No books are available.</p>
         {% endif %}

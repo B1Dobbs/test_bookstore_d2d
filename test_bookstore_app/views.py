@@ -4,6 +4,7 @@ from django.template import loader
 from django.views.generic.detail import DetailView
 from django.shortcuts import get_object_or_404
 from .models import Book
+from django.core.paginator import *
 
 # Create your views here.
 def library(request):
@@ -11,6 +12,10 @@ def library(request):
     sort = request.GET.get('sort', 'title')
     desc = sort[0]
     book_list = Book.objects.all().order_by(sort)
+
+    paginator = Paginator(book_list, 2)
+    page = request.GET.get('page')
+    book_list = paginator.get_page(page)
     context = {
         'book_list': book_list,
         'desc': desc,
