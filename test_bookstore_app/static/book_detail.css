@@ -34,7 +34,7 @@ hr {
 
 .details-block {
     width: 80%;
-    padding-top: 50px;
+    padding-top: 25px;
     margin: auto;
     margin-top: 50px;
     display: block;
@@ -126,13 +126,13 @@ button:hover {
 
 .check {
     color: #92d36e;
-    font-size: 27px;
+    font-size: 17px;
     vertical-align: text-bottom;
 }
 
 .x-mark {
     color: #ff3823;
-    font-size: 27px;
+    font-size: 17px;
     vertical-align: text-bottom;
 }
 
