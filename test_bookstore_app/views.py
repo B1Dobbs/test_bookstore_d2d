@@ -22,11 +22,9 @@ def library(request):
 
     # Perform search query on list
     if request.method == 'POST':
-        #query = request.GET.get('q')
         lib.search = request.POST.get('q', '')
         lib.save()
     query = lib.search
-    print(query.name);
     book_list = Book.objects.filter(
             Q(title__icontains=query) | Q(isbn__icontains=query ) | Q(authors__icontains=query)
         ).order_by(sort)
@@ -35,7 +33,6 @@ def library(request):
     paginator = Paginator(book_list, 10)
     page = request.GET.get('page', '1')
     book_list = paginator.get_page(page)
-        
     context = {
         'book_list': book_list,
         'desc': desc,

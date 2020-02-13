@@ -18,4 +18,4 @@ class Book(models.Model):
 
 class Library(models.Model):
     books = models.ForeignKey(Book, on_delete=models.CASCADE)
-    search = models.CharField(max_length=250, blank=True, default=None)
+    search = models.CharField(max_length=250, blank=True, default='')
