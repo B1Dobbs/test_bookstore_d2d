@@ -14,7 +14,11 @@ from django.core.paginator import *
 # Create your views here.
 def library(request):
     template = loader.get_template('library.html')
-    lib = Library.objects.get(pk=1)
+    try:
+        lib = Library.objects.get(pk=1)
+    except Library.DoesNotExist:
+        lib = Library(1, '')
+        lib.save()
 
     # Get Sorting parameters for context
     sort = request.GET.get('sort', 'title')
