@@ -17,5 +17,4 @@ class Book(models.Model):
         return self.title + " (" + self.isbn + ")"
 
 class Library(models.Model):
-    books = models.ForeignKey(Book, on_delete=models.CASCADE)
     search = models.CharField(max_length=250, blank=True, default='')
