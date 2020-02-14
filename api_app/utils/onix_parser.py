@@ -4,6 +4,8 @@ from lxml import etree
 from test_bookstore_app.models import Book
 import os
 import datetime 
+from django.utils.html import strip_tags
+from django.db import IntegrityError
 
 """Modified from reference to accomidate for namespaces.
 Reference: https://stackoverflow.com/questions/5572247/how-to-find-xml-elements-via-xpath-in-python-in-a-namespace-agnostic-way 
@@ -24,17 +26,9 @@ def xpath_ns(tree, expr):
     return tree.xpath(expr, namespaces=nsmap)
 
 def get_root(xmlFile):
-    with open(xmlFile) as fobj:
-        encoding = fobj.readline()
-        fobj.seek(0)
-        xml = fobj.read()
-
-    if "utf-8" in encoding:
-        root = etree.fromstring(xml.encode('utf-8'))
-    elif "utf-16" in encoding:
-        root = etree.fromstring(xml.encode('utf-16'))
-    else:
-        root = etree.fromstring(xml)
+    fobj = open(xmlFile, "rb")
+    xml = fobj.read()
+    root = etree.fromstring(xml)
     return root
 
 def get_isbn_13(product_root):
@@ -88,7 +82,7 @@ def get_detail(product_root):
         text_type = xpath_ns(detail, ".//TextType")
         text = xpath_ns(detail, ".//Text")
         if text_type[0].text == "03":
-            return text[0].text
+            return strip_tags(text[0].text)
     return 0
 
 def get_availability(product_root):
@@ -184,14 +178,15 @@ def process_products(root):
         except:
             print("INFO: Could not process price for ISBN: %s." % book.isbn)
 
-        book.save()
+        try:
+            book.save()
+        except IntegrityError:
+            print("ERROR: Duplicate book found for ISBN: %s" % book.isbn)
+        except:
+            print("ERROR: Could not save book data for ISBN: %s" % book.isbn)
 
 def process_onix(file_path):
-    try:
-        root = get_root(file_path)
-    except:
-        print("ERROR: Could not open file.")
-
+    root = get_root(file_path)
     process_products(root)
 
 if __name__ == "__main__":
