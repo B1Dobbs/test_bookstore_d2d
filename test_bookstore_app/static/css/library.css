@@ -1,0 +1,191 @@
+/* Our navy color */
+/* #1B255A */
+
+/* our orange color #FF5722 */
+
+.title_bar {
+    overflow: hidden;
+    background-color: #1B255A;
+    left: 0;
+    right: 0;
+    top: 0;
+    position: absolute;
+}
+
+.title_bar h1{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 20px;
+    width: 100%;
+    font-family: 'Playfair Display', serif;
+}
+
+
+.book_filters{
+    margin: 55px;
+    margin-top: 40px;
+}
+
+.book_filters table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.book_filters tr{
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #1B255A;
+    font-weight: 100;
+    border-color: gray!important;
+    border-bottom: 2px solid #ccc!important;
+}
+
+.book_filters .headers a{
+    text-decoration: none;
+    color: gray;
+    font-weight: normal;
+    font-size: 12px;
+    cursor: default;
+}
+
+.book_filters a{
+    color: #1B255A;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.book_filters .book_title:hover{
+    color: #FF5722;
+}
+
+.book_filters th{
+    text-align: left;
+    font-weight: 100;
+    padding-bottom: 5px;
+    font-size: 12px;
+}
+
+.book_filters td{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.book_filters .avail{
+    text-align: center;
+}
+
+.book_filters .headers{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 11px;
+    color: gray;
+    font-weight: 100;
+}
+
+.check{
+    color: #92d36e;
+    font-size: 27;
+}
+
+.xmark{
+    color: #ff3823;
+    font-size: 27;
+}
+
+
+.filterArrow{
+    color: #1B255A;
+    margin-left: 5px;
+    font-size: 15px;
+    position: relative;
+    top: 2px;
+    cursor: pointer;
+}
+
+.filterArrow:hover{
+    color: #FF5722;
+}
+
+
+.search_bar{
+    text-align: center;
+    margin-top: 90px;
+    border: lightgray;
+    margin-left: 55px;
+    margin-right: 55px;
+}
+
+.search_bar input{
+    width: 260px;
+    font-size: 11px;
+    padding: 11px;
+}
+
+.search_bar button{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 9px;
+    padding: 13px;
+    width: 80px;
+    font-weight: normal;
+    background-color:#FF5722 ;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.search_bar button:hover{
+    background-color: rgb(238, 81, 34);
+}
+
+.magGlass{
+    margin-right: 5px;
+    font-size: 10px;
+    position: relative;
+    margin-top: 2px;
+}
+
+.pages{
+    margin-top: 50px;
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 11px;
+    color: gray;
+    font-weight: 100;
+}
+
+.pages a{
+    text-decoration: none;
+    color: gray;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.cur_page{
+    font-weight: bolder;
+    color: #FF5722;
+}
+
+.page_num{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.next{
+    margin-left: 15px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.next:hover{
+    color: #FF5722;
+}
+
+.prev{
+    margin-right: 15px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.prev:hover{
+    color: #FF5722;
+}
