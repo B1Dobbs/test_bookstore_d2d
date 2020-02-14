@@ -10,7 +10,7 @@ class Book(models.Model):
     availability = models.BooleanField(default=False)
     description = models.CharField(max_length=1024, blank=True)
     series = models.CharField(max_length=250, blank=True)
-    vol_num = models.IntegerField(null=True, blank=True)
+    vol_num = models.FloatField(null=True, blank=True)
     languages = models.CharField(max_length=20, default='eng')
 
     def __str__(self):
