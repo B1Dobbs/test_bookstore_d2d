@@ -4,6 +4,7 @@ from lxml import etree
 from test_bookstore_app.models import Book
 import os
 import datetime 
+from django.utils.html import strip_tags
 
 """Modified from reference to accomidate for namespaces.
 Reference: https://stackoverflow.com/questions/5572247/how-to-find-xml-elements-via-xpath-in-python-in-a-namespace-agnostic-way 
@@ -88,7 +89,7 @@ def get_detail(product_root):
         text_type = xpath_ns(detail, ".//TextType")
         text = xpath_ns(detail, ".//Text")
         if text_type[0].text == "03":
-            return text[0].text
+            return strip_tags(text[0].text)
     return 0
 
 def get_availability(product_root):

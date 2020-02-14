@@ -1,4 +1,6 @@
 from django.db import models
+from .validators import validate_xml
+import onixcheck
 
 class SingletonModel(models.Model):
 
