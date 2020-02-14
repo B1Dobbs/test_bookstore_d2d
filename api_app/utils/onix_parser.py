@@ -5,11 +5,11 @@ from test_bookstore_app.models import Book
 import os
 import datetime 
 from django.utils.html import strip_tags
+from django.db import IntegrityError
 
-"""Used to include namespace from any Onix file for simple xpath usage.
+"""Modified from reference to accomidate for namespaces.
 Reference: https://stackoverflow.com/questions/5572247/how-to-find-xml-elements-via-xpath-in-python-in-a-namespace-agnostic-way 
 """
-
 def xpath_ns(tree, expr):
     relative = False
     if expr[0] == ".":
@@ -26,21 +26,9 @@ def xpath_ns(tree, expr):
     return tree.xpath(expr, namespaces=nsmap)
 
 def get_root(xmlFile):
-    """
-    Get XML Root
-    """
-    with open(xmlFile) as fobj:
-        encoding = fobj.readline()
-        fobj.seek(0)
-        xml = fobj.read()
-    print(encoding)
-
-    if "utf-8" in encoding:
-        root = etree.fromstring(xml.encode('utf-8'))
-    elif "utf-16" in encoding:
-        root = etree.fromstring(xml.encode('utf-16'))
-    else:
-        root = etree.fromstring(xml)
+    fobj = open(xmlFile, "rb")
+    xml = fobj.read()
+    root = etree.fromstring(xml)
     return root
 
 def get_isbn_13(product_root):
@@ -59,11 +47,9 @@ def get_collection(product_root):
 
     if len(title) != 0:
         collection['title'] = title[0].text
-        #collection = {'title' : title[0].text, 'num': num[0].text}
 
     if len(num) != 0:
         collection['num'] = num[0].text
-    
 
     return collection
 
@@ -134,55 +120,74 @@ def get_price(product_root):
 def process_products(root):
     result = xpath_ns(root,"//Product") 
     for product in result:
-        #print("\nBook: ")
+
         book = Book()
-        book.isbn = get_isbn_13(product)   
-        #print(get_isbn_13(product))  
 
-        collection = get_collection(product)
-        if 'title' in collection.keys():
-            book.series = collection['title']
-            #print(collection['title'])
-        if 'num' in collection.keys():
-            book.vol_num = collection['num']
-            #print(collection['num'])
+        try: 
+            book.isbn = get_isbn_13(product)   
+        except:
+            print("ERROR: Could not get product ISBN.")  
 
-        book.title = get_title(product)
-        #print(get_title(product, root))
+        try:
+            collection = get_collection(product)
+            if 'title' in collection.keys():
+                book.series = collection['title']
+            if 'num' in collection.keys():
+                book.vol_num = collection['num']
+        except:
+            print("INFO: Could not process collection for ISBN: %s." % book.isbn)
 
-        authors = get_contributors(product)
+        try:
+            book.title = get_title(product)
+        except:
+            print("INFO: Could not process title for ISBN: %s." % book.isbn)
 
-        if len(authors) > 0:
+        try:
+            authors = get_contributors(product)
             authors_str = authors[0]
             for x in range(1, len(authors)):
                 authors_str += ", " + authors[x]
             book.authors = authors_str
-            #print(get_contributors(product))
+        except:
+            print("INFO: Could not process contributors for ISBN: %s." % book.isbn)
 
-        book.language = get_language(product)
-        #print(get_language(product))
+        try:
+            book.language = get_language(product)
+        except:
+            print("INFO: Could not process language for ISBN: %s." % book.isbn)
 
-        book.description = get_detail(product)
-        #print(get_detail(product))
+        try:
+            book.description = get_detail(product)
+        except:
+            print("INFO: Could not process description for ISBN: %s." % book.isbn)
 
-        isAvailable = get_availability(product)
-        if isAvailable != -1:
-            book.availability = isAvailable
-            #print(get_availability(product))
+        try:
+            isAvailable = get_availability(product)
+            if isAvailable != -1:
+                book.availability = isAvailable
+        except:
+            print("INFO: Could not process availability for ISBN: %s." % book.isbn)
 
-        book.release_date = get_publish_date(product)
-        #print(get_publish_date(product))
+        try:
+            book.release_date = get_publish_date(product)
+        except:
+            print("INFO: Could not process release date for ISBN: %s." % book.isbn)
 
-        book.price = get_price(product)
-        #print(get_price(product))
+        try:
+            book.price = get_price(product)
+        except:
+            print("INFO: Could not process price for ISBN: %s." % book.isbn)
 
-        book.save()
-
-    return True
+        try:
+            book.save()
+        except IntegrityError:
+            print("ERROR: Duplicate book found for ISBN: %s" % book.isbn)
+        except:
+            print("ERROR: Could not save book data for ISBN: %s" % book.isbn)
 
 def process_onix(file_path):
     root = get_root(file_path)
     process_products(root)
 
 if __name__ == "__main__":
-    process_onix("../resources/large_example.xml")
+    process_onix("../resources/example.xml")
