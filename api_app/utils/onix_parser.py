@@ -121,12 +121,12 @@ def process_products(root):
     result = xpath_ns(root,"//Product") 
     for product in result:
 
-        book = Book()
-
-        try: 
-            book.isbn = get_isbn_13(product)   
-        except:
-            print("ERROR: Could not get product ISBN.")  
+        isbn = get_isbn_13(product)
+        if Book.objects.filter(isbn=isbn).exists():
+            book = Book.objects.get(isbn=isbn)
+        else:
+            book = Book()
+            book.isbn = get_isbn_13(product)
 
         try:
             collection = get_collection(product)

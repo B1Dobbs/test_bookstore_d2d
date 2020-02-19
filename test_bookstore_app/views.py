@@ -13,6 +13,7 @@ from django.db.models import Q
 from django.core.paginator import *
 # Create your views here.
 def library(request):
+    #Book.objects.all().delete()
     template = loader.get_template('library.html')
     try:
         lib = Library.objects.get(pk=1)
