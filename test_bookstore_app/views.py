@@ -25,6 +25,11 @@ def library(request):
     sort = request.GET.get('sort', 'title')
     desc = sort[0]
 
+    if request.method == 'GET':
+        if 'q' in request.GET:
+            lib.search = request.GET['q']
+            lib.save()
+
     # Perform search query on list
     if request.method == 'POST':
         lib.search = request.POST.get('q', '')
